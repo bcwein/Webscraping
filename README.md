@@ -18,16 +18,16 @@ The code iterates through a dictionary of facebook pages to scrape. This is stor
 *data.yml* and extracted like this:
 
 ```python
-  data = yaml.load(open('data.yml'), Loader=yaml.FullLoader)
-      sites = data['dictionary-name']
-      result = [dataFrameCreatorFacebook(
-              name, site, pages=100) for name, site in sites.items()]
+data = yaml.load(open('data.yml'), Loader=yaml.FullLoader)
+sites = data['page-dictionary-name']
+result = [dataFrameCreatorFacebook(
+        name, site, pages=100) for name, site in sites.items()]
 ```
 
 The format of the yml file is like so:
 
 ```yml
-page-list-name:
+page-dictionary-name:
   company1: page1
   company2: page2
   company3: page3
