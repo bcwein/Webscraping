@@ -14,24 +14,25 @@ There are some things to set up before this code is fully functional. This is
 discussed in the sections below.
 
 ### Input data
-The code iterates through a list of facebook pages to scrape. This is stored in 
+The code iterates through a dictionary of facebook pages to scrape. This is stored in 
 *data.yml* and extracted like this:
 
 ```python
-    data = yaml.load(open('data.yml'), Loader=yaml.FullLoader)
-    sites = data['page-list-name']
-    result = [dataFrameCreatorFacebook(site, pages=100) for site in sites]
+  data = yaml.load(open('data.yml'), Loader=yaml.FullLoader)
+      sites = data['dictionary-name']
+      result = [dataFrameCreatorFacebook(
+              name, site, pages=100) for name, site in sites.items()]
 ```
 
 The format of the yml file is like so:
 
 ```yml
 page-list-name:
-  - page1
-  - page2
-  - page3
-  - page4
-  - page5
+  company1: page1
+  company2: page2
+  company3: page3
+  company4: page4
+  company5: page5
 ```
 
 It should be stated that the items in this list is the last part of the full
