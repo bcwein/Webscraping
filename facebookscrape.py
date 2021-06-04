@@ -14,13 +14,12 @@ repository.
 # %%
 from facebook_scraper import get_posts
 import pandas as pd
-from multiprocessing import Pool
 import time
 from datetime import timedelta
 import yaml
 
 
-def dataFrameCreatorFacebook(company, pages=10):
+def dataFrameCreatorFacebook(companyname, companysite, pages=10):
     """Construct Pandas dataframe for facebook page.
 
     Args:
@@ -30,11 +29,11 @@ def dataFrameCreatorFacebook(company, pages=10):
         pandas dataframe: dataframe of company, post, like and comments
     """
     data = []
-    for post in get_posts(company, pages=pages, options={"comments": True},
+    for post in get_posts(companysite, pages=pages, options={"comments": True},
                           cookies="cookies.txt"):
         try:
             data.append(
-                [company, post['time'], post['likes'], post['comments']]
+                [companyname, post['time'], post['likes'], post['comments']]
             )
         except Exception as ex:
             continue
@@ -52,7 +51,8 @@ if __name__ == '__main__':
         4. Save dataframe to csv.
     """
     data = yaml.load(open('data.yml'), Loader=yaml.FullLoader)
-    sites = data['sites-transport']
-    result = [dataFrameCreatorFacebook(site, pages=100) for site in sites]
+    sites = data['sites-wholesale']
+    result = [dataFrameCreatorFacebook(
+            name, site, pages=100) for name, site in sites.items()]
     parsed = pd.concat(result)
-    parsed.to_csv('parsed-transport.csv')
+    parsed.to_csv('parsed-wholesale.csv')
