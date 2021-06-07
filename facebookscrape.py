@@ -19,7 +19,7 @@ from datetime import timedelta
 import yaml
 
 
-def dataFrameCreatorFacebook(companyname, companysite, pages=10):
+def dataFrameCreatorFacebook(companyname, companysite, pages=10, timeout=30):
     """Construct Pandas dataframe for facebook page.
 
     Args:
@@ -50,7 +50,9 @@ if __name__ == '__main__':
         3. Concatenate Dataframes.
         4. Save dataframe to csv.
     """
-    data = yaml.load(open('data.yml'), Loader=yaml.FullLoader)
+    with open('data.yml', 'rt', encoding='utf8') as yml:
+        data = yaml.load(yml, yaml.FullLoader)
+
     sites = data['sites-wholesale']
     pages = data['pages']
     result = [dataFrameCreatorFacebook(
