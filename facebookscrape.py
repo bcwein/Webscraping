@@ -58,4 +58,4 @@ if __name__ == '__main__':
     result = [dataFrameCreatorFacebook(
             name, site, pages=pages) for name, site in sites.items()]
     parsed = pd.concat(result)
-    parsed.to_csv('parsed-wholesale.csv')
+    parsed.to_csv('parsed-wholesale.csv', index=False)
