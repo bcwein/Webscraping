@@ -52,7 +52,8 @@ if __name__ == '__main__':
     """
     data = yaml.load(open('data.yml'), Loader=yaml.FullLoader)
     sites = data['sites-wholesale']
+    pages = data['pages']
     result = [dataFrameCreatorFacebook(
-            name, site, pages=100) for name, site in sites.items()]
+            name, site, pages=pages) for name, site in sites.items()]
     parsed = pd.concat(result)
     parsed.to_csv('parsed-wholesale.csv')
