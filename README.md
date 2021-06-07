@@ -3,6 +3,16 @@
 This is a simple webscraping tool used to collect simple metrics of social
 media data.
 
+## Setup
+
+To set up the required packages and dependencies, an anaconda environment is
+created. When anaconda is installed on your computer. You can create a new 
+anaconda environment with the required dependencies by running
+
+```
+conda env create -f scraping.yml
+```
+
 ## Facebookwebscrape
 
 Facebookwebscrape.py is based on 
