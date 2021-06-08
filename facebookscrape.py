@@ -14,9 +14,10 @@ repository.
 # %%
 from facebook_scraper import get_posts
 import pandas as pd
-import time
 from datetime import timedelta
 import yaml
+import datetime
+import concurrent.futures
 
 
 def dataFrameCreatorFacebook(companyname, companysite, pages=10, timeout=30):
@@ -55,7 +56,13 @@ if __name__ == '__main__':
 
     sites = data['sites-wholesale']
     pages = data['pages']
-    result = [dataFrameCreatorFacebook(
-            name, site, pages=pages) for name, site in sites.items()]
+    MAX_THREADS = data['max-threads']
+    threads = min(MAX_THREADS, len(sites))
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as executor:
+        result = executor.map(
+            lambda x: dataFrameCreatorFacebook(x[0], x[1], pages), sites.items()
+        )
+
     parsed = pd.concat(result)
     parsed.to_csv('parsed-wholesale.csv', index=False)
