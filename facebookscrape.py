@@ -20,7 +20,8 @@ import datetime
 import concurrent.futures
 
 
-def dataFrameCreatorFacebook(companyname, companysite, pages=10, timeout=30):
+def dataFrameCreatorFacebook(companyname, companysite, pages=10, timeout=30,
+                             group=False):
     """Construct Pandas dataframe for facebook page.
 
     Args:
@@ -30,8 +31,21 @@ def dataFrameCreatorFacebook(companyname, companysite, pages=10, timeout=30):
         pandas dataframe: dataframe of company, post, like and comments
     """
     data = []
-    for post in get_posts(companysite, pages=pages, options={"comments": True},
-                          cookies="cookies.txt"):
+
+    if group:
+        parsefunc = get_posts(
+            group=companysite,
+            pages=pages, options={"comments": True},
+            cookies="cookies.txt"
+        )
+    else:
+        parsefunc = get_posts(
+            companysite,
+            pages=pages, options={"comments": True},
+            cookies="cookies.txt"
+        )
+
+    for post in parsefunc:
         try:
             data.append(
                 [companyname, post['time'], post['likes'], post['comments']]
@@ -54,15 +68,23 @@ if __name__ == '__main__':
     with open('data.yml', 'rt', encoding='utf8') as yml:
         data = yaml.load(yml, yaml.FullLoader)
 
-    sites = data['sites-wholesale']
+    sites = data['groups']
     pages = data['pages']
     MAX_THREADS = data['max-threads']
     threads = min(MAX_THREADS, len(sites))
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as executor:
+    with concurrent.futures.ThreadPoolExecutor(
+        max_workers=threads
+    ) as executor:
         result = executor.map(
-            lambda x: dataFrameCreatorFacebook(x[0], x[1], pages), sites.items()
+            lambda x: dataFrameCreatorFacebook(
+                    x[0],
+                    x[1],
+                    pages,
+                    group=True
+            ),
+            sites.items()
         )
 
     parsed = pd.concat(result)
-    parsed.to_csv('parsed-wholesale.csv', index=False)
+    parsed.to_csv('parsed-groups.csv', index=False)
