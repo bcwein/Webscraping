@@ -25,13 +25,18 @@ def dataFrameCreatorFacebook(companyname, companysite, pages=10, timeout=30,
     """Construct Pandas dataframe for facebook page.
 
     Args:
-        company (string): url identifier for facebook page
+        companyname (string): url identifier for facebook page
+        companysite (string or int):
         pages (int): No of pages to scroll until termination.
+        timeout (int): Waiting time for post until timout.
+        group (boolean): used for conditional parser function.
+
     Returns:
         pandas dataframe: dataframe of company, post, like and comments
     """
     data = []
 
+    # Conditionally use group argument to parse group or pages.
     if group:
         parsefunc = get_posts(
             group=companysite,
@@ -52,6 +57,7 @@ def dataFrameCreatorFacebook(companyname, companysite, pages=10, timeout=30,
             )
         except Exception as ex:
             continue
+
     return pd.DataFrame(data, columns=["site", "time", "likes", "comments"])
 
 
@@ -61,7 +67,8 @@ if __name__ == '__main__':
 
     This main function does the following:
         1. Load input data from data.yml
-        2. Create a list of dataframes with list comprehension.
+        2. Use multithreaded map to apply dataframecreation for all elements in
+        list.
         3. Concatenate Dataframes.
         4. Save dataframe to csv.
     """
