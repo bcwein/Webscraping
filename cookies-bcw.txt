@@ -1,0 +1,23 @@
+# Netscape HTTP Cookie File
+# http://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file!  Do not edit.
+
+.facebook.com	TRUE	/Challenger-Immigration-Services-Moga-903044039851315	TRUE	0	presence	C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1622197261239%2C%22v%22%3A1%7D
+.facebook.com	TRUE	/groups/214290215256589/user/100025768358053	TRUE	0	presence	C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1606739172327%2C%22v%22%3A1%7D
+.facebook.com	TRUE	/fptshop261khanhhoiquan4	TRUE	0	presence	C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1607517072492%2C%22v%22%3A1%7D
+.facebook.com	TRUE	/groups/924359841348699	TRUE	0	presence	C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1612182518102%2C%22v%22%3A1%7D
+.facebook.com	TRUE	/ResiliencebyDesignlab	TRUE	0	presence	C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1615203271459%2C%22v%22%3A1%7D
+.facebook.com	TRUE	/thutrang.trinh.1	TRUE	0	presence	C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1607074959446%2C%22v%22%3A1%7D
+.facebook.com	TRUE	/groups/ssu.vn	TRUE	0	presence	C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1612163614883%2C%22v%22%3A1%7D
+.facebook.com	TRUE	/public	TRUE	0	presence	C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1615203623662%2C%22v%22%3A1%7D
+.facebook.com	TRUE	/hln238	TRUE	0	presence	C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1615286014996%2C%22v%22%3A1%7D
+.facebook.com	TRUE	/	TRUE	1630068751	datr	DnlmXa8-odJin2WgwV149744
+.facebook.com	TRUE	/	TRUE	1653039278	sb	H3lmXaZll_VN7cqMSMmaeTjj
+.facebook.com	TRUE	/	TRUE	1654867623	c_user	100051487093109
+.facebook.com	TRUE	/	TRUE	0	m_pixel_ratio	1.25
+.facebook.com	TRUE	/	TRUE	0	x-referer	eyJyIjoiL3N0b3J5LnBocD9zdG9yeV9mYmlkPTEwMTU3OTk0MzY0NzQzNTkwJmlkPTM1MzE3MzIwODU4OSIsImgiOiIvc3RvcnkucGhwP3N0b3J5X2ZiaWQ9MTAxNTc5OTQzNjQ3NDM1OTAmaWQ9MzUzMTczMjA4NTg5IiwicyI6Im0ifQ%3D%3D
+.facebook.com	TRUE	/	TRUE	0	presence	C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1621519052754%2C%22v%22%3A1%7D
+.facebook.com	TRUE	/	TRUE	1623929610	wd	1550x1057
+.facebook.com	TRUE	/	TRUE	1623421576	spin	r.1003942305_b.trunk_t.1623331576_s.1_v.2_
+.facebook.com	TRUE	/	TRUE	1654867623	xs	39%3AzIJzpzbrPnCPUw%3A2%3A1589967258%3A-1%3A12197%3A%3AAcXE5rE4sxY9TGkU7OLUnxgN50O0quGD3azGAZGI5vKI
+.facebook.com	TRUE	/	TRUE	1631107621	fr	1lTi0JnAyju9mk3Y4.AWUfRlvXfVwethvMStVgJr9hCiw.BgwhMo.HA.AAA.0.0.BgwhMo.AWWn6O4tLpc
