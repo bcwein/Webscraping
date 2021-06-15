@@ -74,8 +74,18 @@ if __name__ == '__main__':
 
     sites = data['groups']
     pages = data['pages']
+    csv = data['csv']
 
-    result = [dataFrameCreatorFacebook(
-        name, site, pages=pages, group=True) for name, site in sites.items()]
+    result = []
+
+    for name, site in sites.items():
+        try:
+            result.append(dataFrameCreatorFacebook(
+                        name, site, pages=pages, group=True
+                    ))
+        except Exception:
+            parsed = pd.concat(result)
+            parsed.to_csv(csv, index=False)
+
     parsed = pd.concat(result)
-    parsed.to_csv('parsed-groups.csv', index=False)
+    parsed.to_csv(csv, index=False)
